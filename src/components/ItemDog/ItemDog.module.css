@@ -1,0 +1,81 @@
+
+.dog_item {
+    position: relative;
+    width: 100%;
+    height: 290px;
+}
+
+.dog_item__heard {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.dog_item__heard:hover{
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 25px;
+    left: 25px;
+    background: url('../../assets/img/yellow_heart.png') no-repeat center;
+    z-index: 12;
+}
+.dog_item__heard:hover img{
+    display: none;
+}
+
+.dog_item__name {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    z-index: 10;
+    padding: 0 20px;
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 700;
+}
+.dog_item__img {
+    width: 100%;
+    height: 100%;
+}
+
+.dog_item__img:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: -o-linear-gradient(86.79deg, #000 -15.62%, rgba(0, 0, 0, 0) 45.69%);
+    background: linear-gradient(3.21deg, #000 -15.62%, rgba(0, 0, 0, 0) 45.69%);
+}
+.dog_item__img img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 10px;
+}
+
+@media all and (max-width: 980px) {
+    .dog_item:first-child {
+        grid-column: 1/3;
+        grid-row: 1/2;
+    }
+}
+
+@media all and (max-width: 680px) {
+    .dog_item__img{
+        height: 290px!important;
+    }
+    .dog_item:first-child{
+        margin-bottom: 30px;
+        height: 290px!important;
+    }
+    .dog_item{
+        margin-bottom: 30px;
+    }
+}

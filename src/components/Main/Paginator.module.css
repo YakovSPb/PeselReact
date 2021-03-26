@@ -1,0 +1,51 @@
+.paginator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 25px 0;
+}
+.paginator span{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: #3c59f0;
+    margin-right: 15px;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.paginator .selectedPage{
+    background: #ffc107;
+}
+.paginator span:hover{
+    background: #6d83f2;
+}
+.paginator span:last-child{
+    margin-right: 0;
+}
+
+.paginator .prev img{
+    width: 20px;
+    height: 20px;
+}
+.paginator .next img{
+    width: 20px;
+    height: 20px;
+    transform: scale(-1, 1);
+}
+@media all and (max-width: 680px) {
+    .paginator span{
+        width: 30px;
+        height: 30px;
+        margin-right:  7px;
+    }
+    .paginator .prev img, .paginator .next img{
+        width: 13px;
+        height: 13px;
+    }
+    .paginator{
+        margin: 25px 0;
+    }
+}
