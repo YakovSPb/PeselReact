@@ -1,5 +1,5 @@
 import s from "./Dog.module.css";
-import Loader from "../Loader/Loader";
+import Loader from "../common/Loader/Loader";
 import React from "react";
 import Footer from "../Footer/Footer";
 
@@ -34,7 +34,7 @@ const Dog = ({dogProfile, onSaveFovourite, onDeleteFovourite}) => {
                     </div>
                 </div>
             </main>
-            {dogProfile.length > 0 && <Footer />}
+            {dogProfile && <Footer />}
         </>
     )
 }

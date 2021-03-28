@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import s from "./Paginator.module.css";
-import arrow from '../../assets/img/back.png';
+import arrow from '../../../assets/img/back.png';
+import cn from 'classnames';
 
 let Paginator = ({pagesCount, currentPage, onPagesChanged, portionSize, onGetDogsMore}) => {
 
@@ -26,7 +27,7 @@ let Paginator = ({pagesCount, currentPage, onPagesChanged, portionSize, onGetDog
             }
             {pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map((p, index) => {
-                    return <span key={index} className={currentPage === p ? s.selectedPage : undefined}
+                    return <span key={index} className={cn({[s.selectedPage]:currentPage === p})}
                                  onClick={(eee) => {
                                      onPagesChanged(p)
                                  }}>{p}</span>

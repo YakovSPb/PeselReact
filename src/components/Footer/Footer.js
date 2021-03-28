@@ -88,6 +88,7 @@ const FormFooter = ({setSuccessMessage, setErrorMessage, message}) => {
                 </form>
             }}
         </Formik>
+        <p>© By Yakov Kondratev 2021 info@prospekt.pro</p>
     </>
 
 }

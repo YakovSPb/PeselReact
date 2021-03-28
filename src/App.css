@@ -2,7 +2,7 @@ a{
     text-decoration: none;
 }
 
-body {
+body{
     font-size: 16px;
     min-width: 320px;
     position: relative;
@@ -88,6 +88,16 @@ body {
     color: #fff;
 }
 
+
+.error404 {
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+.error404 img{
+    width: 100%;
+    height: auto;
+}
 
 
 @media all and (max-width: 980px) {

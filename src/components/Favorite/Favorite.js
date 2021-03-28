@@ -1,5 +1,5 @@
 import s from "./Favorite.module.css";
-import Loader from "../Loader/Loader";
+import Loader from "../common/Loader/Loader";
 import React from "react";
 import Footer from "../Footer/Footer";
 import ItemDog from "../ItemDog/ItemDog";

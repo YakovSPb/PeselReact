@@ -1,9 +1,9 @@
 import React from 'react';
 import s from "./Main.module.css";
 import NavContainer from "../Nav/NavContainer";
-import Loader from "../Loader/Loader";
+import Loader from "../common/Loader/Loader";
 import Footer from "../Footer/Footer";
-import Paginator from "./Paginator";
+import Paginator from "../common/Paginator/Paginator";
 import ItemDog from "../ItemDog/ItemDog";
 
 
