@@ -1,12 +1,18 @@
 import {dogsAPI} from "../api/api";
 const SET_BREEDS = 'nav/SET_BREEDS';
 
-let initialState = {
-    breeds: null,
 
+type BreedsType = {
+    name: string
 }
 
-const navReducer = (state = initialState, action) => {
+let initialState = {
+    breeds: null as Array<BreedsType> | null,
+}
+
+type InititalStateType = typeof initialState;
+
+const navReducer = (state = initialState, action: any): InititalStateType => {
 
     switch (action.type) {
         case SET_BREEDS: {
@@ -20,10 +26,16 @@ const navReducer = (state = initialState, action) => {
     }
 }
 
-export const setBreeds = (breeds) => ({type: SET_BREEDS, breeds})
+
+type SetBreedsActionType = {
+    type: typeof SET_BREEDS
+    breeds: Array<BreedsType>
+}
+
+export const setBreeds = (breeds: Array<BreedsType>): SetBreedsActionType => ({type: SET_BREEDS, breeds})
 
 export const getBreeds = () => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         let breedsResponse = await dogsAPI.getBreeds();
         breedsResponse.unshift({name: 'Все собачки'})
         dispatch(setBreeds(breedsResponse));

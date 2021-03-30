@@ -1,14 +1,27 @@
 import {dogsAPI} from "../api/api";
-
+import {DogType} from "../types/types";
 const SET_DOG = 'dog/SET_DOG';
 const FOLLOWSINGE = 'dog/FOLLOWSINGE';
 
+
+
 let initialState = {
-    dogProfile: [],
-    isFetching: true
+    dogProfile: {
+        id: 0,
+        image_id: '',
+        name: '',
+        url: '',
+        temperament: '',
+        weight: 0,
+        height: 0,
+        favorite: false
+    },
+    isFetching: true,
 }
 
-const dogReducer = (state = initialState, action) => {
+type InititalStatetype = typeof initialState;
+
+const dogReducer = (state = initialState, action: any): InititalStatetype => {
 
     switch (action.type) {
         case SET_DOG: {
@@ -30,12 +43,23 @@ const dogReducer = (state = initialState, action) => {
     }
 }
 
-export const setDog = (dogProfile) => ({type: SET_DOG, dogProfile})
+type DogProfileActionType = {
+    type: typeof SET_DOG
+    dogProfile: DogType
+}
+
+export const setDog = (dogProfile: DogType):DogProfileActionType => ({type: SET_DOG, dogProfile})
+
+type FollowActionType = {
+    type: typeof FOLLOWSINGE
+    id: number
+    imageId: string
+}
+
+export const follow = (id:number, imageId:string):FollowActionType =>  ({type: FOLLOWSINGE, id, imageId})
 
 
-export const follow = (id, imageId) =>  ({type: FOLLOWSINGE, id, imageId})
-
-export const getDog = (dogId) => async (dispatch) => {
+export const getDog = (dogId: number) => async (dispatch: any) => {
 
       let favoriteResponse =  await dogsAPI.getAllFovourite();
       let singeDogResponse = await dogsAPI.getSingleDog(dogId, favoriteResponse)

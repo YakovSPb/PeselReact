@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {
-    addDog, follow, getDogsMore,
-    getDogs, setAllFavoriteDogs, setDogs,
+    follow, getDogsMore, getDogs,
+    setAllFavoriteDogs, setDogs, setAllBreedName,
     sortDogs, toggleIsFetching, saveFavoriteDog,
-    deleteDog, getDogsByBreed, setCurrentPage, setAllBreedName
+    deleteDog, getDogsByBreed, setCurrentPage,
 } from "../../redux/main-reducer";
 import {connect} from "react-redux";
 import Main from "./Main";
@@ -94,7 +94,7 @@ let mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {
-    follow, addDog, setDogs,
+    follow,  setDogs,
     setCurrentPage, getDogsMore, sortDogs,
     toggleIsFetching, setAllFavoriteDogs,
     getDogs, saveFavoriteDog, deleteDog, getDogsByBreed, setAllBreedName

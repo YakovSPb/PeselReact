@@ -7,9 +7,7 @@ const Dog = ({dogProfile, onSaveFovourite, onDeleteFovourite}) => {
     if(dogProfile.length === 0) {
         return <Loader />
     }
-
     return (
-
         <>
             <main className={s.main}>
                 <div className="container container_main">

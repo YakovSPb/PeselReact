@@ -1,4 +1,5 @@
 import {dogsAPI} from "../api/api";
+import {DogType} from "../types/types";
 
 const SET_DOGS_FAVORITE = 'favorite/SET_DOGS_FAVORITE';
 const TOGGLE_IS_FETCHING = 'favorite/TOGGLE_IS_FETCHING';
@@ -7,12 +8,14 @@ const FOLLOW = 'favorite/FOLLOW';
 const LOAD_MORE_FAVORITE = 'favorite/LOAD_MORE_FAVORITE';
 
 let initialState = {
-    dogsDataFavorite: [],
+    dogsDataFavorite: [] as Array<DogType>,
     visible: 9,
     isFetching: true
 }
 
-const favoriteReducer = (state = initialState, action) => {
+type IntitalStateType = typeof initialState;
+
+const favoriteReducer = (state = initialState, action: any):IntitalStateType => {
 
         switch(action.type) {
             case FOLLOW: {
@@ -41,34 +44,59 @@ const favoriteReducer = (state = initialState, action) => {
         }
 }
 
-export const setDogsFavorite = (dogs) => ({type: SET_DOGS_FAVORITE, dogs});
+type SetDogsFavoriteAction = {
+    type: typeof SET_DOGS_FAVORITE
+    dogs: Array<DogType>
+}
 
-export const setCurrentPage = (currentPageFavorite) => ({type: SET_CURRENT_PAGE, currentPageFavorite})
+export const setDogsFavorite = (dogs: Array<DogType>): SetDogsFavoriteAction => ({type: SET_DOGS_FAVORITE, dogs});
 
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+type typeSetCurrentPageAction = {
+    type: typeof SET_CURRENT_PAGE
+    currentPageFavorite: number
+}
 
-export const loadMoreFavorite = () => ({type: LOAD_MORE_FAVORITE})
+export const setCurrentPage = (currentPageFavorite: number): typeSetCurrentPageAction => ({type: SET_CURRENT_PAGE, currentPageFavorite})
 
-export const follow = (id, imageId) => ({type: FOLLOW, id, imageId})
+type typeToggleIsFetchingAction = {
+    type: typeof TOGGLE_IS_FETCHING
+    isFetching: boolean
+}
+
+export const toggleIsFetching = (isFetching:boolean): typeToggleIsFetchingAction => ({type: TOGGLE_IS_FETCHING, isFetching})
+
+type LoadMoreFavoriteAction = {
+    type: typeof LOAD_MORE_FAVORITE
+}
+
+export const loadMoreFavorite = (): LoadMoreFavoriteAction => ({type: LOAD_MORE_FAVORITE})
+
+type typeFollowAction = {
+    type: typeof FOLLOW
+    id: number
+    imageId: string
+}
+
+export const follow = (id: number, imageId: string): typeFollowAction => ({type: FOLLOW, id, imageId})
 
 
 export const getFavoriteDogs = () => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         let favoriteResponse = await dogsAPI.getAllFovourite();
         dispatch(setDogsFavorite(favoriteResponse));
         dispatch(toggleIsFetching(false));
     }
 }
 
-export const saveFavoriteDog = (dogId, imageId) => {
-    return async (dispatch) => {
+export const saveFavoriteDog = (dogId: number, imageId: string) => {
+    return async (dispatch: any) => {
        let saveFavoriteResponse = await dogsAPI.saveFovourite(imageId)
         dispatch(follow(saveFavoriteResponse.id, imageId))
     }
 }
 
-export const deleteFavoriteDog = (dogId, imageId) => {
-    return (dispatch) => {
+export const deleteFavoriteDog = (dogId: number, imageId: string) => {
+    return (dispatch: any) => {
          dogsAPI.deleteFovourite(dogId);
         dispatch(follow(dogId, imageId))
     }

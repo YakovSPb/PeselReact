@@ -1,6 +1,6 @@
 import {dogsAPI} from "../api/api";
+import {DogType} from "../types/types";
 
-const ADD_DOG = 'main/ADD_DOG';
 const FOLLOW = 'main/FOLLOW';
 const SET_DOGS = 'main/SET_DOGS';
 const SET_CURRENT_PAGE = 'main/SET_CURRENT_PAGE';
@@ -11,8 +11,8 @@ const SET_ALL_FAVORITE_DOGS = 'main/SET_ALL_FAVORITE_DOGS';
 const SET_BREED_VALUE = 'main/SET_BREED_VALUE';
 
 let initialState = {
-    dogsData: [],
-    dogsFavoriteAll: [],
+    dogsData: [] as Array<DogType>,
+    dogsFavoriteAll: [] as Array<DogType>,
     pageSize: 10,
     totalDogsCount: 200,
     portionSize: 5,
@@ -20,11 +20,14 @@ let initialState = {
     typeImg: true,
     isFetching: true,
     follow: false,
-    breedValue: 'Все собачки'
+    breedValue: 'Все собачки',
 
 }
 
-const mainReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState;
+
+
+const mainReducer = (state = initialState, action: any): InitialStateType => {
 
     switch (action.type) {
         case FOLLOW: {
@@ -38,13 +41,7 @@ const mainReducer = (state = initialState, action) => {
                 })
             }
         }
-        case ADD_DOG: {
-            return {
-                ...state,
-                dogsData: [...state.dogsData, {id: 8, name: state.newDogBreadText}],
-                newDogBreadText: ''
-            };
-        }
+
         case SET_DOGS: {
             return { ...state, dogsData: action.dogs}
         }
@@ -73,28 +70,64 @@ const mainReducer = (state = initialState, action) => {
     }
 }
 
-export const follow = (id, imageId) => ({type: FOLLOW, id, imageId})
+type FollowActionType = {
+    type: typeof FOLLOW
+    id: number
+    imageId: string
+}
 
-export const setDogs = (dogs) => ({type: SET_DOGS, dogs})
+export const follow = (id: number, imageId: string): FollowActionType => ({type: FOLLOW, id, imageId})
 
-export const setAllFavoriteDogs = (dogsFavoriteAll) => ({type: SET_ALL_FAVORITE_DOGS, dogsFavoriteAll})
+type SetDogsActionType = {
+    type: typeof SET_DOGS
+    dogs: Array<DogType>
+}
 
-export const addDog = () => ({type: ADD_DOG});
+export const setDogs = (dogs: Array<DogType>):SetDogsActionType => ({type: SET_DOGS, dogs})
 
-export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+type DogsFavoriteAllActionType = {
+    type: typeof SET_ALL_FAVORITE_DOGS
+    dogsFavoriteAll: Array<DogType>
+}
 
-export const getDogsMore = () => ({type: GET_DOGS_MORE})
+export const setAllFavoriteDogs = (dogsFavoriteAll: Array<DogType>):DogsFavoriteAllActionType => ({type: SET_ALL_FAVORITE_DOGS, dogsFavoriteAll})
 
-export const sortDogs = () => ({type: SORT_DOGS})
+type CurrentPageActionType = {
+    type: typeof SET_CURRENT_PAGE
+    currentPage: number
+}
 
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const setCurrentPage = (currentPage: number): CurrentPageActionType => ({type: SET_CURRENT_PAGE, currentPage})
 
-export const setBreedValue = (name) => ({type: SET_BREED_VALUE, name})
+type GetDogsMoreActionType = {
+    type: typeof GET_DOGS_MORE
+}
+
+export const getDogsMore = ():GetDogsMoreActionType => ({type: GET_DOGS_MORE})
+
+type SortDogsActionType = {
+    type: typeof SORT_DOGS
+}
+
+export const sortDogs = ():SortDogsActionType => ({type: SORT_DOGS})
+
+type IsFetchingActionType = {
+    type: typeof TOGGLE_IS_FETCHING
+    isFetching: boolean
+}
+
+export const toggleIsFetching = (isFetching: boolean): IsFetchingActionType => ({type: TOGGLE_IS_FETCHING, isFetching})
+
+type SetBreedValueActionType = {
+    type: typeof SET_BREED_VALUE
+    name: string
+}
+
+export const setBreedValue = (name: string): SetBreedValueActionType => ({type: SET_BREED_VALUE, name})
 
 
-
-export const getDogs = (typeImg, pageSize, currentPage) => {
-    return async (dispatch) => {
+export const getDogs = (typeImg: string, pageSize: string, currentPage: string) => {
+    return async (dispatch: any) => {
 
        dispatch(toggleIsFetching(true));
 
@@ -107,22 +140,22 @@ export const getDogs = (typeImg, pageSize, currentPage) => {
     }
 }
 
-export const saveFavoriteDog = (dogId, imageId) => {
-    return async (dispatch) => {
+export const saveFavoriteDog = (dogId: number, imageId: string) => {
+    return async (dispatch: any) => {
         let saveFavoriteResponse = await dogsAPI.saveFovourite(imageId)
         dispatch(follow(saveFavoriteResponse.id, imageId))
     }
 }
 
-export const deleteDog = (dogId, imageId) => {
-    return (dispatch) => {
+export const deleteDog = (dogId: number, imageId: string) => {
+    return (dispatch: any) => {
         dogsAPI.deleteFovourite(dogId);
         dispatch(follow(dogId, imageId));
     }
 }
 
-export const getDogsByBreed = (breedId, name) => {
-     return async (dispatch) => {
+export const getDogsByBreed = (breedId: number, name: string) => {
+     return async (dispatch: any) => {
 
         let allFavoriteResponse = await dogsAPI.getAllFovourite();
         dispatch(setAllFavoriteDogs(allFavoriteResponse));
@@ -135,8 +168,8 @@ export const getDogsByBreed = (breedId, name) => {
     }
 }
 
-export const setAllBreedName = (name) => {
-    return (dispatch) => {
+export const setAllBreedName = (name: string) => {
+    return (dispatch: any) => {
         dispatch(setBreedValue(name))
     }
 }
