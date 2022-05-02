@@ -28,7 +28,6 @@ const App = (props) => {
         setTimeout(() => {
             setErrorStatus(false)
         }, 5000);
-        console.log(promiseRejectionEvent);
     }
 
     return (

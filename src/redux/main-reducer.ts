@@ -20,8 +20,6 @@ let initialState = {
     typeImg: true,
     isFetching: true,
     follow: false,
-    breedValue: 'Все собачки',
-
 }
 
 type InitialStateType = typeof initialState;
@@ -61,10 +59,6 @@ const mainReducer = (state = initialState, action: any): InitialStateType => {
         case TOGGLE_IS_FETCHING: {
             return {...state, isFetching: action.isFetching}
         }
-        case SET_BREED_VALUE: {
-            return {...state, breedValue: action.name}
-        }
-
         default:
             return state;
     }
@@ -123,8 +117,6 @@ type SetBreedValueActionType = {
     name: string
 }
 
-export const setBreedValue = (name: string): SetBreedValueActionType => ({type: SET_BREED_VALUE, name})
-
 
 export const getDogs = (typeImg: string, pageSize: string, currentPage: string) => {
     return async (dispatch: any) => {
@@ -163,15 +155,9 @@ export const getDogsByBreed = (breedId: number, name: string) => {
         let dogsResponse = await dogsAPI.getDogsByBreed(breedId, allFavoriteResponse);
 
         dispatch(setDogs(dogsResponse))
-        dispatch(setBreedValue(name))
 
     }
 }
 
-export const setAllBreedName = (name: string) => {
-    return (dispatch: any) => {
-        dispatch(setBreedValue(name))
-    }
-}
 
 export default mainReducer;

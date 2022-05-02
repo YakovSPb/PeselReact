@@ -6,13 +6,13 @@ import {withRouter} from "react-router";
 import {dogsAPI} from "../../api/api";
 import {compose} from "redux";
 
+import { useFetchFavorite,  useFetchDogById} from '../../hooks';
+
 const DogsContainer = ({match, getDog, setDog, follow, dogProfile}) => {
 
-    useEffect(() => {
-        let dogId = match.params.dogId;
-        getDog(dogId)
-        return function cleanup() {setDog([])}
-}, [])
+    const dogId = match.params.dogId;
+    const {favoriteDogs} = useFetchFavorite();
+    const dogById = useFetchDogById(dogId,favoriteDogs)
 
 
     const onSaveFovourite = (id, imageId) => {
@@ -26,7 +26,7 @@ const DogsContainer = ({match, getDog, setDog, follow, dogProfile}) => {
        dogsAPI.deleteFovourite(id);
        follow(id);
     }
-        return <Dog dogProfile={dogProfile} onSaveFovourite={onSaveFovourite} follow={follow} onDeleteFovourite={onDeleteFovourite} />
+        return <Dog isFetching={dogById.isFetching} dogProfile={dogById?.data} onSaveFovourite={onSaveFovourite} follow={follow} onDeleteFovourite={onDeleteFovourite} />
     }
 
 

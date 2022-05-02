@@ -1,17 +1,21 @@
 import React from 'react';
-import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
 import ReactDOM from "react-dom";
-import App from "./App";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { QueryClientProvider } from 'react-query';
 
+import App from "./App";
+import reportWebVitals from './reportWebVitals';
+import {queryClient} from './hooks/'
 
 ReactDOM.render(
-    <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-            <App/>
+            <App />
         </Provider>
-    </React.StrictMode>,
+        <ReactQueryDevtools initialIsOpen={true} />
+    </QueryClientProvider>,
     document.getElementById('root'));
 
 
