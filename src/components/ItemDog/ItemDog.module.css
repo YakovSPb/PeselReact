@@ -65,13 +65,19 @@
 }
 
 @media all and (max-width: 980px) {
-    .dog_item:first-child {
-        grid-column: 1/3;
-        grid-row: 1/2;
+    .dog_item {
+        position: relative;
+        width: calc(50% - 17px) !important;
+        height: 290px !important;
     }
 }
 
 @media all and (max-width: 680px) {
+    .dog_item {
+        position: relative;
+        width: 100% !important;
+        height: 290px !important;
+    }
     .dog_item__img{
         height: 290px!important;
     }
