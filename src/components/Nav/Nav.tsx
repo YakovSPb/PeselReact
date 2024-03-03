@@ -1,13 +1,11 @@
 import s from './Nav.module.css'
-import React, {FC, ChangeEvent} from 'react';
+import React, {FC} from 'react';
 import Select from 'react-select';
-
 
 type NavProps = {
     pageSize: number
     setPageSize: (ps:number)=>void
 }
-
 
 const Nav:FC<NavProps> = ({pageSize, setPageSize}) => {
     type TOption = {
