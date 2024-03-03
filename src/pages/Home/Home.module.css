@@ -1,16 +1,12 @@
-
 .dogs_list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 30px;
+    display: flex;
+    flex-wrap: wrap;    
+    gap: 30px
 }
-
 
 .main {
-    margin-top: 30px;
+    margin-top: 15px;
 }
-
-
 
 input{
     display: block;
@@ -22,8 +18,6 @@ input{
     color: red;
 }
 
-
-
 @media all and (max-width: 980px) {
     .dogs_list {
         display: grid;
@@ -32,7 +26,6 @@ input{
     }
 
 }
-
 
 @media all and (max-width: 680px) {
     .dogs_list {

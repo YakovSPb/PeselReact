@@ -1,8 +1,12 @@
 
 .dog_item {
     position: relative;
-    width: 100%;
+    width: calc(33% - 17px);
     height: 290px;
+    &:first-child {
+        width: 100%;
+        height: 400px;
+    }
 }
 
 .dog_item__heard {
