@@ -1,21 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import { getDogBreeds, useFetchDogs} from "../../api/api";
+import {useQuery} from "@tanstack/react-query";
+
 import s from "./Home.module.css";
 import ItemDog from "../../components/ItemDog/ItemDog";
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
 import Loader from "../../components/common/Loader/Loader";
-import { useQuery} from "react-query";
 import {IBreed} from "../../types";
 import Paginator from "../../components/common/Paginator/Paginator";
+
 let Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(4);
     const {
         data,
         isLoading,
-    } = useQuery(['dogBreeds', { currentPage, pageSize }], ({ pageParam = 1 }) => getDogBreeds(currentPage, pageSize), {
-        keepPreviousData: true,
+    } = useQuery({
+        queryKey: ['dogBreeds', currentPage, pageSize], // 1. Ключ зависит от страницы и размера
+        queryFn: () => getDogBreeds(currentPage, pageSize), // 2. Функция использует актуальные значения
         staleTime: 24 * 60 * 60 * 1000,
     });
 

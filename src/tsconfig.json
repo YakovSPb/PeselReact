@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "es2017"],
-    "strict": true,
-    "types": ["react", "react-dom", "react-select"]
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react-jsx"
   }
 }
