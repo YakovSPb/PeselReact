@@ -1,70 +1,70 @@
 .header {
-    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.55);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.55);
+  -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.55);
 }
 .header_inner {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100px;
 }
 .logo {
-    font-size: 30px;
-    text-transform: uppercase;
+  font-size: 30px;
+  text-transform: uppercase;
 }
 .logo a {
-    color: #3c59f0;
+  color: #3c59f0;
 }
 
 .logo a:hover {
-    text-decoration: none;
-    color: #3c59f0;
+  text-decoration: none;
+  color: #3c59f0;
 }
 .favorite_link {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    font-size: 16px;
-    color: #626262;
-    -webkit-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 16px;
+  color: #626262;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
-.favorite_link.active{
-    color: #fff;
+.favorite_link.active {
+  color: #fff;
 }
 .favorite_link.active svg path {
-    fill: #fff;
+  fill: #fff;
 }
 .favorite_link:hover {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 .favorite_link:hover svg path {
-    fill: #fff;
+  fill: #fff;
 }
 .favorite_link svg {
-    margin: 2px 0 0 10px;
+  margin: 2px 0 0 10px;
 }
 .favorite_link svg path {
-    -webkit-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 @media all and (max-width: 680px) {
-    .header_inner{
-        flex-direction: column;
-        height: auto;
-        padding-bottom: 20px;
-    }
+  .header_inner {
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 20px;
+  }
 }

@@ -1,61 +1,54 @@
 .sort_nav {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    height: 44px;
-    color: #626262;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  height: 44px;
+  color: #626262;
 }
 
-.select{
-    width: 80px;
+.select {
+  width: 80px;
 }
 
-.select > div{
-    background-color: #151419;
-
+.select > div {
+  background-color: #151419;
 }
-.select > div > div > div{
-    background-color: #151419;
-    color: white
-}
-
-
-.select > div > div > div:hover{
-    background-color: white;
-    color: black
+.select > div > div > div {
+  background-color: #151419;
+  color: white;
 }
 
-.selectBreed{
-    width: 200px;
+.select > div > div > div:hover {
+  background-color: white;
+  color: black;
 }
 
-.selectBreed > div{
-    background-color: #151419;
-
-}
-.selectBreed > div{
-    background-color: #151419;
-
+.selectBreed {
+  width: 200px;
 }
 
-.selectBreed > div > div > div{
-    background-color: #151419;
-    color: white;
-    cursor: 'ponter';
+.selectBreed > div {
+  background-color: #151419;
+}
+.selectBreed > div {
+  background-color: #151419;
 }
 
-.selectBreed > div > div > div:hover{
-    background-color: white;
-    color: black
+.selectBreed > div > div > div {
+  background-color: #151419;
+  color: white;
+  cursor: "ponter";
 }
 
-
-
+.selectBreed > div > div > div:hover {
+  background-color: white;
+  color: black;
+}
 
 @media all and (max-width: 680px) {
-    .sort_nav{
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-    }
+  .sort_nav {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
 }

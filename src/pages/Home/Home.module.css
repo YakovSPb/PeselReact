@@ -1,41 +1,35 @@
 .dogs_list {
-    display: flex;
-    flex-wrap: wrap;    
-    gap: 30px
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
 .main {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
-input{
-    display: block;
-    margin: 10px auto;
+input {
+  display: block;
+  margin: 10px auto;
 }
 
 .selectedPage {
-    font-weight: bold;
-    color: red;
+  font-weight: bold;
+  color: red;
 }
 
 @media all and (max-width: 980px) {
-    .dogs_list {
-        display: flex;
-        grid-gap: 30px;
-    }
-
+  .dogs_list {
+    display: flex;
+    grid-gap: 30px;
+  }
 }
 
 @media all and (max-width: 680px) {
-    .dogs_list {
-        display: block;
-    }
-    .main {
-        margin-top: 5px;
-    }
-
+  .dogs_list {
+    display: block;
+  }
+  .main {
+    margin-top: 5px;
+  }
 }
-
-
-
-
